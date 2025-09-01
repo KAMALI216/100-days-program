@@ -1,4 +1,4 @@
-def find(a):
+def find(a): 
     n = len(a)
     b = sum(a)   # base ones count
 
