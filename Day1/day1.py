@@ -1,24 +1,35 @@
-def find(a):
-    n = len(a)
-    b = sum(a)   # base ones count
+s = input().strip()  # input string
 
-    # Special case: if all ones, flipping reduces count
-    if b == n:
-        return n - 1
+o = []  # odd digits
+e = []  # even digits
+c = 0   # special character count
 
-    # Transform: 0 -> +1, 1 -> -1
-    t = [1 if x == 0 else -1 for x in a]
+for ch in s:
+    if ch.isdigit():
+        d = int(ch)
+        if d % 2 == 0:
+            e.append(ch)
+        else:
+            o.append(ch)
+    elif not ch.isalnum():  # fixed: call the method
+        c += 1
 
-    # Kadane’s algorithm
-    m = c = t[0]
-    for x in t[1:]:
-        c = max(x, c + x)
-        m = max(m, c)
+# decide starting type
+start_odd = (c % 2 == 1)
 
-    return b + m
+i = j = 0
+r = []
 
+while i < len(o) or j < len(e):
+    if start_odd:
+        if i < len(o):
+            r.append(o[i])
+            i += 1
+        start_odd = False
+    else:
+        if j < len(e):
+            r.append(e[j])
+            j += 1
+        start_odd = True
 
-# Driver
-N = int(input().strip())
-a = list(map(int, list(input().strip())))
-print(find(a))
+print("".join(r))
