@@ -30,7 +30,7 @@ class Solution {
 
         // If difference > 1, not balanced
         if (Math.abs(leftHeight - rightHeight) > 1) return -1;
-
+ 
         // Return height of current node
         return 1 + Math.max(leftHeight, rightHeight);
     }
