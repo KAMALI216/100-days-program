@@ -1,6 +1,6 @@
 //processing the string in chunks of 2k and reversing only the first k characters of each chunk.
 //Reverse String II
-	
+ 	
 class Solution {
     public String reverseStr(String s, int k) {
         char[] arr = s.toCharArray();  // convert string to character array
